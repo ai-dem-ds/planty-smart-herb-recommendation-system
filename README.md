@@ -5,7 +5,9 @@ The app allows users to describe how they feel in natural language and then sugg
 
 This project was created as part of my Data Science & AI final project.
 
+
 ---
+
 
 ## 🌿 Project Idea
 
@@ -25,7 +27,9 @@ with a curated herbal dataset.
 
 The goal is not to provide medical advice, but to create a safe, user-friendly recommendation system for herbal wellness orientation.
 
+
 ---
+
 
 ## ⚠️ Important Disclaimer
 
@@ -34,7 +38,9 @@ Planty is for educational and wellness-orientation purposes only.
 It does **NOT** replace medical advice, diagnosis, or treatment.  
 Users should always review safety information carefully and consult a qualified healthcare professional when needed.
 
+
 ---
+
 
 ## 🚀 Main Features
 
@@ -88,6 +94,9 @@ Show all herbs – shows all matching herbs from the dataset
 Surprise me – shows a random selection of matching herbs
 
 This gives the user more control over the recommendation output.
+
+
+---
 
 
 ## 🧠 Recommendation Logic
@@ -162,6 +171,8 @@ The final recommendation score combines:
 
 The tag-based logic remains the main ranking system, while TF-IDF supports the ranking slightly.
 
+---
+
 
 ## 🛠️ Technologies Used:
 Python
@@ -197,6 +208,9 @@ smart_herb_recommendation_system/
     └── config.toml
 
 
+---
+
+
 ## 📊 Dataset
 
 ### The project uses a medicinal plant dataset based on plant information such as:
@@ -229,18 +243,24 @@ smart_herb_recommendation_system/
 The app clearly states that herbal recommendations are for general wellness orientation only.
 
 
-## ▶️ How to Run the App:
+---
+
+
+### ▶️ How to Run the App:
 1. Clone the repository
-- git clone <your-repository-link>
-- cd smart_herb_recommendation_system
+    - git clone <your-repository-link>
+    - cd smart_herb_recommendation_system
 2. Create and activate a virtual environment
-- python3 -m venv .venv
-- source .venv/bin/activate
+    - python3 -m venv .venv
+    - source .venv/bin/activate
 3. Install dependencies
-- python -m pip install -r requirements.txt
-- The required spaCy English model is included in the requirements file
+    - python -m pip install -r requirements.txt
+    - The required spaCy English model is included in the requirements file
 4. Run the Streamlit app
-- streamlit run app.py
+    - streamlit run app.py
+
+
+---
 
 
 ## 💬 Example Inputs:
@@ -249,6 +269,9 @@ I cannot sleep and feel restless
 My stomach feels heavy and bloated
 My skin feels irritated and dry
 I feel puffy and my fingers are swollen
+
+
+---
 
 
 ## ✅ Current Status:
@@ -265,6 +288,9 @@ The current version includes:
 - 🔮 Future Improvements
 
 
+---
+
+
 ## Possible next steps:
 - add multilingual support for German and Turkish
 - improve semantic matching with sentence transformers and embeddings
@@ -276,10 +302,16 @@ The current version includes:
 - deploy the app online
 
 
+---
+
+
 ## 👩‍💻 Author
 Kübra Demirhan
 Data Science & AI Final Project
 Planty – Smart Herb Recommendation System
+
+
+---
 
 
 ## 🌺 Final Note

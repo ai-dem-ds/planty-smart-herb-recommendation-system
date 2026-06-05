@@ -1008,7 +1008,7 @@ with st.sidebar:
 
     st.markdown(
         """
-        **Email:** kubra-demirhan@mailfence.com
+        **Email:** planty@e-mail.com
         **Owner:** Kübra Demirhan
         """
     )
