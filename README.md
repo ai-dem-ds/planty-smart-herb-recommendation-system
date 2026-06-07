@@ -195,6 +195,7 @@ Git / GitHub
 
 📁 Project Structure:
 
+```text
 smart_herb_recommendation_system/
 │
 ├── app.py
@@ -212,7 +213,7 @@ smart_herb_recommendation_system/
 │
 └── .streamlit/
     └── config.toml
-
+```
 
 ---
 
