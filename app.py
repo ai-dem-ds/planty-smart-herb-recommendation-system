@@ -903,52 +903,54 @@ st.markdown("""
 <style>
 /* Allgemeine Button-Form */
 div.stButton > button {
-    border-radius: 14px;
-    padding: 0.55rem 1rem;
-    font-weight: 600;
-    border: 1px solid transparent;
-    transition: all 0.2s ease-in-out;
+    border-radius: 16px !important;
+    padding: 0.70rem 1.25rem !important;
+    font-weight: 700 !important;
+    border: 1.5px solid transparent !important;
+    min-height: 48px !important;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
 /* Beispiel-Buttons: 4 verschiedene Farben */
 div[data-testid="column"]:nth-of-type(1) div.stButton > button {
-    background-color: #FADADD;
-    color: #7A3E48;
-    border: 1px solid #E8B7C0;
+    background-color: #FADADD !important;
+    color: #7A3E48 !important;
+    border: 10px solid #E8B7C0 !important;
 }
 div[data-testid="column"]:nth-of-type(1) div.stButton > button:hover {
-    background-color: #F6C6D0;
-    color: #6A2F39;
+    background-color: #F6C6D0 !important;
+    color: #6A2F39 !important;
 }
 
 div[data-testid="column"]:nth-of-type(2) div.stButton > button {
-    background-color: #E6E0F8;
-    color: #5C4B8A;
-    border: 1px solid #D1C7F2;
+    background-color: #E6E0F8 !important;
+    color: #5C4B8A !important;
+    border: 1px solid #D1C7F2 !important;
 }
 div[data-testid="column"]:nth-of-type(2) div.stButton > button:hover {
-    background-color: #D9D0F4;
-    color: #4E3E7C;
+    background-color: #D9D0F4 !important;
+    color: #4E3E7C !important;
 }
 
 div[data-testid="column"]:nth-of-type(3) div.stButton > button {
-    background-color: #FBE9D7;
-    color: #8A5A2E;
-    border: 1px solid #F1D2B2;
+    background-color: #FBE9D7 !important;
+    color: #8A5A2E !important;
+    border: 1px solid #F1D2B2 !important;
 }
 div[data-testid="column"]:nth-of-type(3) div.stButton > button:hover {
-    background-color: #F7DFC7;
-    color: #74471F;
+    background-color: #F7DFC7 !important;
+    color: #74471F !important;
 }
 
 div[data-testid="column"]:nth-of-type(4) div.stButton > button {
-    background-color: #DDF2E1;
-    color: #3E6B4A;
-    border: 1px solid #BFE3C8;
+    background-color: #DDF2E1 !important;
+    color: #3E6B4A !important;
+    border: 10px solid #BFE3C8 !important;
 }
 div[data-testid="column"]:nth-of-type(4) div.stButton > button:hover {
-    background-color: #CFEAD6;
-    color: #2F593A;
+    background-color: #CFEAD6 !important;
+    color: #2F593A !important;
 }
 
 /* Submit-Button */
@@ -1005,13 +1007,9 @@ with st.sidebar:
     st.markdown("---")
 
     st.subheader("💌 Contact:")
+    st.write("**Email:** planty@e-mail.com")
+    st.write("**Owner:** Kübra Demirhan")
 
-    st.markdown(
-        """
-        **Email:** planty@e-mail.com
-        **Owner:** Kübra Demirhan
-        """
-    )
 
 
 # -----------------------------
@@ -1020,11 +1018,11 @@ with st.sidebar:
 
 st.title("🌺 Planty")
 
-st.markdown("### Find herb suggestions based on how you feel 🌱")
+st.markdown("### Gentle Herbal Wellness Guidance 🌱")
 
-st.write(
-    "Describe your symptoms or needs and Planty will suggest herbs and plants that may support your needs."
-)
+# st.write(
+#     "Describe your symptoms or needs and Planty will suggest herbs and plants that may support your needs."
+# )
 
 
 if plant_query.strip() != "":
@@ -1127,36 +1125,44 @@ if "last_view_mode" not in st.session_state:
 
 
 # old 
-with st.form("recommendation_form"):
-    user_text = st.text_input(
-        "Tell Planty how you're feeling today 🌸",
-        placeholder="Chat with Planty 🌱",
-        key="user_input_text"
-    )
+# with st.form("recommendation_form"):
+#     user_text = st.text_input(
+#         "Tell Planty how you're feeling today 🌸",
+#         placeholder="Chat with Planty 🌱",
+#         key="user_input_text"
+#     )
 
-    view_mode = st.selectbox(
-        "Select:",
+user_text = st.text_input(
+    "Tell Planty how you're feeling today 🌸",
+    placeholder="Chat with Planty 🌱",
+    key="user_input_text"
+)
+
+view_mode = st.selectbox(
+    "Select:",
         options=[
-            "Best matches ✅",
-            "Show all Herbs 📚",
-            "Surprise me 🪄"
-        ],
+        "Best Matches ✅",
+        "Show All Herbs 📚",
+        "Surprise Me 🪄"
+    ],
+    index=0
+)
+
+if view_mode == "Show All Herbs 📚":
+    top_n = 9999
+    # st.caption("Planty will show all matching Herbs 🍀")
+
+else:
+    top_n = st.selectbox(
+        "Select the number of recommendations:",
+        options=[3, 5, 7, 10],
         index=0
     )
 
-    if view_mode == "Show all herbs 📚":
-        top_n = None
-        st.caption("Planty will show you all matching herbs 🌱")
-    else:
-        top_n = st.selectbox(
-        "Select the number of recommendations:",
-        options=[2, 3, 5, 7, 10],
-        index=1
-    )
+submitted = st.button("Find Herbs ✨")
 
-    submitted = st.form_submit_button("Find Herbs ✨")
-    if submitted and view_mode == "Surprise me 🪄":
-        st.session_state.surprise_batch_counter += 1
+if submitted and view_mode == "Surprise Me 🪄":
+    st.session_state.surprise_batch_counter += 1
 
 
 # -----------------------------
@@ -1205,15 +1211,15 @@ if submitted:
             recommendations_to_show = recommendations.copy()
 
             # Mode 1: Best matches
-            if view_mode == "Best matches ✅":
+            if view_mode == "Best Matches ✅":
                 recommendations_to_show = recommendations_to_show.head(selected_number)
 
             # Mode 2: Show all herbs
-            elif view_mode == "Show all herbs 📚":
+            elif view_mode == "Show All Herbs 📚":
                 recommendations_to_show = recommendations_to_show
 
             # Mode 3: Surprise me
-            elif view_mode == "Surprise me 🪄":
+            elif view_mode == "Surprise Me 🪄":
                 recommendations_to_show = recommendations_to_show.sample(
                     n=min(selected_number, len(recommendations_to_show)),
                     random_state=random.randint(1, 1_000_000)
