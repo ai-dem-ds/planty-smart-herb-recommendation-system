@@ -321,8 +321,8 @@ The current version includes:
 
 
 ## 👩‍💻 Author
-Kübra Demirhan
-Data Science & AI Final Project
+**Kübra Demirhan**<br>
+Data Science & AI Final Project<br>
 Planty – Smart Herb Recommendation System
 
 
