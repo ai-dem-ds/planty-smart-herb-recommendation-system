@@ -47,6 +47,7 @@ Users should always review safety information carefully and consult a qualified 
 ### 1. Natural Language Input
 
 Users can type short descriptions such as:
+
 - I feel stressed and overwhelmed
 - I cannot sleep and feel restless
 - My stomach feels heavy and bloated
@@ -62,15 +63,15 @@ The app displays recommendations in clean Streamlit cards.
 
 Each card includes:
 
-common plant name
-scientific name
-explanation why the plant was suggested
-possible support area
-usual preparation type
-safety warning level
-recommendation fit
-expandable “Read more” section
-expandable “Safety details” section
+- Common plant name
+- scientific name
+- explanation why the plant was suggested
+- possible support area
+- usual preparation type
+- safety warning level
+- recommendation fit
+- expandable “Read more” section
+- expandable “Safety details” section
 
 
 ### 3. Plant Search
@@ -79,19 +80,19 @@ Users can also search for a specific plant by name.
 
 The search result uses the same card layout as the recommendation output and shows:
 
-plant information
-preparation type
-safety details
-summary information when available
+- plant information
+- preparation type
+- safety details
+- summary information when available
 
 
 ### 4. Recommendation Modes
 
 The app includes different display modes:
 
-Best matches – shows the strongest matching herbs
-Show all herbs – shows all matching herbs from the dataset
-Surprise me – shows a random selection of matching herbs
+- Best matches – shows the strongest matching herbs
+- Show all herbs – shows all matching herbs from the dataset and "select the number of recommendation" button loses its functionality
+- Surprise me – shows a random selection of matching herbs
 
 This gives the user more control over the recommendation output.
 
@@ -108,6 +109,7 @@ This gives the user more control over the recommendation output.
 The first layer is based on user need tags.
 
 User input is mapped to tags such as:
+
 - stress
 - sleep
 - digestion
@@ -131,6 +133,7 @@ spaCy is used to improve text understanding.
 The user input is normalized with lemmatization, so different word forms can be interpreted more consistently.
 
 Example:
+
 - stressed → stress
 - sleeping → sleep
 - worried → worry
@@ -144,6 +147,7 @@ This makes the keyword-based NLP layer more flexible.
 Planty also analyzes plant summaries and medicinal property text to create additional wellness signals.
 
 Examples of summary signals:
+
 - calming background
 - sleep-related background
 - digestive background
@@ -158,6 +162,7 @@ These signals are used to improve the explanation text inside the recommendation
 A TF-IDF similarity layer was added to compare the user input with plant-related text fields.
 
 The similarity text is built from:
+
 - common name
 - medicinal properties
 - summary
@@ -175,6 +180,7 @@ The tag-based logic remains the main ranking system, while TF-IDF supports the r
 
 
 ## 🛠️ Technologies Used:
+
 Python
 pandas
 Streamlit
@@ -214,6 +220,7 @@ smart_herb_recommendation_system/
 ## 📊 Dataset
 
 ### The project uses a medicinal plant dataset based on plant information such as:
+
 - common name
 - scientific name
 - medicinal properties
@@ -222,6 +229,7 @@ smart_herb_recommendation_system/
 
 
 ### The dataset was cleaned and enriched with additional columns for the recommendation system, including:
+
 - user need tags
 - effect tags
 - preparation type
@@ -232,6 +240,7 @@ smart_herb_recommendation_system/
 **Safety is an important part of the app.**
 
 ### Planty includes:
+
 - warning levels
 - safety notes
 - known hazards
@@ -247,6 +256,7 @@ The app clearly states that herbal recommendations are for general wellness orie
 
 
 ### ▶️ How to Run the App:
+
 1. Clone the repository
     - git clone <your-repository-link>
     - cd smart_herb_recommendation_system
@@ -264,18 +274,21 @@ The app clearly states that herbal recommendations are for general wellness orie
 
 
 ## 💬 Example Inputs:
-I feel stressed and overwhelmed
-I cannot sleep and feel restless
-My stomach feels heavy and bloated
-My skin feels irritated and dry
-I feel puffy and my fingers are swollen
+
+- I feel stressed and overwhelmed
+- I cannot sleep and feel restless
+- My stomach feels heavy and bloated
+- My skin feels irritated and dry
+- I feel puffy and my fingers are swollen
 
 
 ---
 
 
 ## ✅ Current Status:
+
 The current version includes:
+
 - working Streamlit app
 - plant search
 - recommendation cards
@@ -292,6 +305,7 @@ The current version includes:
 
 
 ## Possible next steps:
+
 - add multilingual support for German and Turkish
 - improve semantic matching with sentence transformers and embeddings
 - add a chatbot-style conversation layer
