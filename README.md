@@ -1,5 +1,9 @@
 # 🌺 Planty – Smart Herb Recommendation System
 
+```
+https://planty-ai.streamlit.app/
+```
+
 Planty is a Streamlit-based herbal wellness recommendation app.  
 The app allows users to describe how they feel in natural language and then suggests herbs or plants that may gently support their needs.
 

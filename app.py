@@ -980,10 +980,12 @@ with st.sidebar:
 
     # st.markdown("---")
 
-    st.subheader("🌿 What Planty does")
+    st.subheader("✨ How 🌺Planty helps ✨")
     st.write(
-        "Share how you feel, and Planty suggests herbs that may support your wellbeing ✨"
+        "Share how you feel, and Planty suggests herbs that may support your wellbeing 🌸"
     )
+
+    st.markdown("---")
 
     st.info(
         "Herbal Guidance Only. It does NOT replace medical advice!"
@@ -1016,9 +1018,9 @@ with st.sidebar:
 # Main Page
 # -----------------------------
 
-st.title("🌺 Planty")
+st.title("🌺Planty")
 
-st.markdown("### Gentle Herbal Wellness Guidance 🌱")
+st.markdown("### Gentle Herbal Wellness Guidance 🌿")
 
 # st.write(
 #     "Describe your symptoms or needs and Planty will suggest herbs and plants that may support your needs."
@@ -1077,7 +1079,7 @@ if plant_query.strip() != "":
                     and str(hazard_text).lower() != "none known"
                 ):
                     with st.expander("Safety details"):
-                        st.write("Please review this safety information carefully:")
+                        st.write("**Please review this safety information carefully:**")
                         st.write(hazard_text)
                     
 st.markdown("---")
@@ -1124,16 +1126,9 @@ if "last_view_mode" not in st.session_state:
 
 
 
-# old 
-# with st.form("recommendation_form"):
-#     user_text = st.text_input(
-#         "Tell Planty how you're feeling today 🌸",
-#         placeholder="Chat with Planty 🌱",
-#         key="user_input_text"
-#     )
-
+# View Mode Function
 user_text = st.text_input(
-    "Tell Planty how you're feeling today 🌸",
+    "Tell 🌺Planty how you're feeling today",
     placeholder="Chat with Planty 🌱",
     key="user_input_text"
 )
@@ -1141,14 +1136,14 @@ user_text = st.text_input(
 view_mode = st.selectbox(
     "Select:",
         options=[
-        "Best Matches ✅",
-        "Show All Herbs 📚",
+        "Best Matches 🎯",
+        "Show All Herbs 🌿",
         "Surprise Me 🪄"
     ],
     index=0
 )
 
-if view_mode == "Show All Herbs 📚":
+if view_mode == "Show All Herbs 🌿":
     top_n = 9999
     # st.caption("Planty will show all matching Herbs 🍀")
 
@@ -1160,6 +1155,8 @@ else:
     )
 
 submitted = st.button("Find Herbs ✨")
+
+# run_recommendation = submitted or user_text.strip() != ""
 
 if submitted and view_mode == "Surprise Me 🪄":
     st.session_state.surprise_batch_counter += 1
@@ -1182,16 +1179,25 @@ if submitted:
             top_n=None
         )
 
-        recommendations = add_similarity_scores(
-            user_text=user_text,
-            recommendations=recommendations,
-            detected_tags=detected_tags
-        )
+        if len(detected_tags) == 0:
+            st.error(
+                "🌺Planty didn't understand you. Please try again!"
+            )
+        
+        elif recommendations is None or recommendations.empty:
+            st.warning("No suitable recommendations found.")
 
-        recommendations = recommendations.sort_values(
-            by="final_score",
-            ascending=False
-        )
+        else:
+            recommendations = add_similarity_scores(
+                user_text=user_text,
+                recommendations=recommendations,
+                detected_tags=detected_tags
+            )
+
+            recommendations = recommendations.sort_values(
+                by="final_score",
+                ascending=False
+            )
 
         if len(detected_tags) == 0:
             st.error(
@@ -1211,11 +1217,11 @@ if submitted:
             recommendations_to_show = recommendations.copy()
 
             # Mode 1: Best matches
-            if view_mode == "Best Matches ✅":
+            if view_mode == "Best Matches 🎯":
                 recommendations_to_show = recommendations_to_show.head(selected_number)
 
             # Mode 2: Show all herbs
-            elif view_mode == "Show All Herbs 📚":
+            elif view_mode == "Show All Herbs 🌿":
                 recommendations_to_show = recommendations_to_show
 
             # Mode 3: Surprise me
